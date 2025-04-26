@@ -5,28 +5,27 @@ const AllTask = () => {
   const [userData, setUserData] = useContext(AuthContext)
 
   return (
-    <div className="bg-[#1c1c1c] p-5 rounded mt-5">
+    <div className="bg-[#1c1c1c] p-4 sm:p-6 rounded mt-5">
       {/* Header Row */}
-      <div className="bg-orange-400 mb-2 py-2 px-4 grid grid-cols-2 sm:grid-cols-5 gap-4 rounded text-center">
-        <h2 className="text-base sm:text-lg font-medium">Employee Name</h2>
-        <h3 className="text-base sm:text-lg font-medium">New Task</h3>
-        <h5 className="text-base sm:text-lg font-medium hidden sm:block">Active Task</h5>
-        <h5 className="text-base sm:text-lg font-medium hidden sm:block">Completed</h5>
-        <h5 className="text-base sm:text-lg font-medium hidden sm:block">Failed</h5>
+      <div className="hidden md:grid grid-cols-5 gap-4 bg-orange-400 p-4 rounded text-center text-sm sm:text-base font-semibold">
+        <div>Employee Name</div>
+        <div>New Task</div>
+        <div>Active Task</div>
+        <div>Completed</div>
+        <div>Failed</div>
       </div>
 
-      {/* Data Rows */}
-      <div className="space-y-2">
+      <div className="flex flex-col gap-4 mt-4">
         {userData.map((elem, idx) => (
           <div
             key={idx}
-            className="border-2 border-emerald-400 py-2 px-4 grid grid-cols-2 sm:grid-cols-5 gap-4 rounded text-center items-center"
+            className="border border-emerald-400 p-4 rounded grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 text-center text-sm sm:text-base break-words"
           >
-            <h2 className="text-base sm:text-lg font-medium">{elem.firstName}</h2>
-            <h3 className="text-base sm:text-lg font-medium text-blue-400">{elem.taskNumbers.newTask}</h3>
-            <h5 className="text-base sm:text-lg font-medium text-yellow-400 hidden sm:block">{elem.taskNumbers.active}</h5>
-            <h5 className="text-base sm:text-lg font-medium text-white hidden sm:block">{elem.taskNumbers.completed}</h5>
-            <h5 className="text-base sm:text-lg font-medium text-red-600 hidden sm:block">{elem.taskNumbers.failed}</h5>
+            <div className="font-medium">{elem.firstName}</div>
+            <div className="text-blue-400">{elem.taskNumbers.newTask}</div>
+            <div className="text-yellow-400">{elem.taskNumbers.active}</div>
+            <div className="text-white">{elem.taskNumbers.completed}</div>
+            <div className="text-red-600">{elem.taskNumbers.failed}</div>
           </div>
         ))}
       </div>
